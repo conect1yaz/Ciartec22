@@ -9,16 +9,13 @@ const textoPrincipio = document.getElementById("principio-texto");
 if (cardsPrincipio.length && tituloPrincipio && textoPrincipio) {
     cardsPrincipio.forEach((card) => {
         card.addEventListener("click", () => {
-            cardsPrincipio.forEach((item) => {
-                item.classList.remove("selecionado");
-                item.setAttribute("aria-pressed", "false");
-            });
+            cardsPrincipio.forEach((item) =>
+                item.classList.remove("selecionado")
+            );
 
             card.classList.add("selecionado");
-            card.setAttribute("aria-pressed", "true");
-
-            tituloPrincipio.textContent = card.dataset.titulo || "";
-            textoPrincipio.textContent = card.dataset.texto || "";
+            tituloPrincipio.textContent = card.dataset.titulo;
+            textoPrincipio.textContent = card.dataset.texto;
         });
     });
 }
@@ -32,22 +29,18 @@ const textoMarco = document.getElementById("marco-texto");
 if (marcos.length && anoMarco && tituloMarco && textoMarco) {
     marcos.forEach((marco) => {
         marco.addEventListener("click", () => {
-            marcos.forEach((item) => {
-                item.classList.remove("ativo");
-                item.setAttribute("aria-pressed", "false");
-            });
+            marcos.forEach((item) =>
+                item.classList.remove("ativo")
+            );
 
             marco.classList.add("ativo");
-            marco.setAttribute("aria-pressed", "true");
-
-            anoMarco.textContent = marco.dataset.ano || "";
-            tituloMarco.textContent = marco.dataset.titulo || "";
-            textoMarco.textContent = marco.dataset.texto || "";
+            anoMarco.textContent = marco.dataset.ano;
+            tituloMarco.textContent = marco.dataset.titulo;
+            textoMarco.textContent = marco.dataset.texto;
         });
     });
 }
 
-// 3. GRÁFICO HISTÓRICO
 // 3. GRÁFICO HISTÓRICO
 const canvas = document.getElementById("grafico-direitos");
 const seletor = document.getElementById("tipo-grafico");
@@ -58,88 +51,57 @@ if (canvas && seletor && typeof Chart !== "undefined") {
         "2021", "2022", "2023", "2024", "2025"
     ];
 
+    // Valores provisórios: conferir com a fonte oficial antes de publicar.
     const valores = [
         64.17, 67.90, 72.56, 78.38, 81.49,
         88.23, 107.22, 116.36, 123.25, 117.83
     ];
 
-    const formatarValor = (valor) =>
-        `${valor.toLocaleString("pt-BR", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        })} milhões`;
-
     const grafico = new Chart(canvas, {
-        type: seletor.value === "bar" ? "bar" : "line",
-
+        type: "line",
         data: {
             labels: anos,
             datasets: [{
                 label: "Pessoas deslocadas à força",
                 data: valores,
+                borderColor: "#168b70",
+                backgroundColor: "rgba(22, 139, 112, 0.12)",
                 borderWidth: 3,
-                tension: 0.3,
-                fill: false,
                 pointRadius: 4,
-                pointHoverRadius: 7
+                pointHoverRadius: 7,
+                fill: true,
+                tension: 0.3
             }]
         },
-
         options: {
             responsive: true,
             maintainAspectRatio: false,
-
             plugins: {
-                legend: {
-                    display: true
-                },
+                legend: { display: false },
                 tooltip: {
                     callbacks: {
                         label: (context) =>
-                            ` ${formatarValor(context.parsed.y)}`
+                            `${context.parsed.y} milhões de pessoas`
                     }
                 }
             },
-
             scales: {
                 y: {
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: "Milhões de pessoas"
+                        text: "Pessoas (milhões)"
                     }
+                },
+                x: {
+                    grid: { display: false }
                 }
             }
         }
     });
 
     seletor.addEventListener("change", () => {
-        if (seletor.value !== "line" && seletor.value !== "bar") {
-            return;
-        }
-
         grafico.config.type = seletor.value;
         grafico.update();
     });
 }
-
-// CIARTEC — Ajustes de segurança do gráfico
-document.addEventListener("DOMContentLoaded", () => {
-    const canvas = document.getElementById("grafico-direitos");
-    const seletor = document.getElementById("tipo-grafico");
-
-    if (!canvas || !seletor) return;
-
-    seletor.addEventListener("change", () => {
-        const grafico = Chart.getChart(canvas);
-
-        if (!grafico) return;
-
-        const tipoSelecionado = seletor.value;
-
-        if (tipoSelecionado === "bar" || tipoSelecionado === "line") {
-            grafico.config.type = tipoSelecionado;
-            grafico.update();
-        }
-    });
-});

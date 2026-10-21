@@ -593,14 +593,15 @@ footer p:first-child {
 
 .hero-protestos {
     padding: 90px 8%;
-    background: linear-gradient(135deg, #172554, #1e3a8a);
-    color: white;
+    background: linear-gradient(135deg, #d9f1e9, #a8dfd1);
+    color: #155e55;
 }
 
 .hero-protestos span {
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 1px;
+    color: #278d7b;
 }
 
 .hero-protestos h1 {
@@ -608,12 +609,13 @@ footer p:first-child {
     font-size: 48px;
     line-height: 1.15;
     margin: 15px 0;
+    color: #155e55;
 }
 
 .hero-protestos p {
     max-width: 760px;
     font-size: 18px;
-    color: #dbeafe;
+    color: #426b62;
 }
 
 
@@ -1090,24 +1092,16 @@ css
 }
 
 
-/* ========================================
-   NAVEGAÇÃO LATERAL — BOTÕES
-======================================== */
-
-
-/* Remove o contorno extra de Rotas de Migração */
-#botao-rotas.sidebar-item:hover {
-    border-color: transparent;
-    box-shadow: none;
+/* Corrige o botão Fronteiras e Muros */
+#botao-fronteiras.sidebar-item {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
 }
-
-/* Foco visível pelo teclado */
-#botao-rotas.sidebar-item:focus-visible,
-#botao-fronteiras.sidebar-item:focus-visible {
-    outline: 2px solid var(--destaque);
-    outline-offset: 2px;
-}
-
 
 /* Mantém a aparência consistente ao passar o mouse */
 #botao-fronteiras.sidebar-item:hover {
@@ -1118,177 +1112,4 @@ css
 #botao-fronteiras.sidebar-item:focus-visible {
     outline: 2px solid var(--destaque);
     outline-offset: 2px;
-}
-
-/* Igualar o hover de Rotas de Migração ao de Fronteiras e Muros */
-#botao-rotas:hover {
-    background-color: #0c9eae;
-    border: 1px solid transparent;
-    box-shadow: none;
-    outline: none;
-}
-
-/* ========================================
-   INTERATIVIDADE — MENU LATERAL
-======================================== */
-
-.sidebar-item {
-    transition:
-        background-color 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease,
-        border-color 0.25s ease;
-
-    transform-origin: left center;
-}
-
-/* Efeito ao passar o mouse */
-.sidebar-item:hover {
-    background-color: #0c9eae;
-    color: #ffffff;
-    transform: scale(1.03);
-    border-color: transparent;
-    box-shadow: none;
-}
-
-/* Mantém o botão ativo destacado */
-.sidebar-item.ativo,
-.sidebar-item.ativo-rotas {
-    background-color: #0c9eae;
-    color: #ffffff;
-}
-
-/* Acessibilidade: foco pelo teclado */
-.sidebar-item:focus-visible {
-    outline: 2px solid #65d9e8;
-    outline-offset: 2px;
-}
-
-/* Tira o contorno que aparece só por clicar com o mouse */
-.sidebar-item:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Contorno para quem navega pelo teclado */
-.sidebar-item:focus-visible {
-    outline: 2px solid #0e9aae;
-    outline-offset: 2px;
-}
-
-/* Visual de "ligado" nos botões Rotas e Fronteiras */
-.sidebar-item[aria-pressed="true"] {
-    border: 1px solid #0e9aae;
-    background: rgba(14, 154, 174, 0.15);
-}
-
-header nav {
-    margin-left: auto !important;
-    margin-right: 30px !important;
-}
-
-/* Card Protestos — mesmo padrão dos outros cards */
-.card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: 238px;
-    box-sizing: border-box;
-}
-
-.card h3 {
-    color: #111827;
-    font-size: 21px;
-    margin: 18px 0 10px;
-}
-
-.card p {
-    color: #526783;
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0 0 20px;
-}
-
-.card a {
-    color: #16839a;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    margin-top: auto;
-}
-
-.card a:hover {
-    text-decoration: underline;
-}
-
-.card-icon {
-    font-size: 28px;
-    margin-bottom: 2px;
-}
-
-.areas {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 20px;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.areas .area {
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.categorias,
-.areas {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 20px;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.card,
-.areas .area {
-    background-color: #ffffff;
-    border: 1px solid rgba(23, 23, 23, 0.15);
-    border-radius: 16px;
-    padding: 30px;
-    min-height: 280px;
-    display: flex;
-    flex-direction: column; /* Deixa ícone, título, texto e link empilhados */
-    align-items: flex-start;
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-}
-
-/* Fixa o link "Explorar" sempre na base do card */
-.card a {
-    margin-top: auto;
-    color: var(--destaque);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.8rem;
-}
-
-@media (max-width: 900px) {
-    .categorias,
-    .areas {
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas em tablets */
-    }
-}
-
-@media (max-width: 600px) {
-    .categorias,
-    .areas {
-        grid-template-columns: 1fr !important; /* 1 coluna em celulares */
-    }
 }
