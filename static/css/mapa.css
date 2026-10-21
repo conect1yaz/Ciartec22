@@ -958,15 +958,15 @@ body {
 
 #painel-rota .ponto-trajeto strong {
 
-    color: #163c4d;
+    color: #000000;
 
-    font-size: 15px;
+    font-size: 20px;
 
 }
 
 #painel-rota .linha-trajeto {
 
-    color: #23d1e8;
+    color: #000000;
 
     font-size: 22px;
 
@@ -1032,9 +1032,9 @@ body {
 
     margin-bottom: 5px;
 
-    color: #22d3e0;
+    color: #000000;
 
-    font-size: 10px;
+    font-size: 12px;
 
     font-weight: bold;
 
@@ -3742,4 +3742,133 @@ body {
     border-color: rgba(255, 255, 255, 0.12);
     color: #ffffff;
     transform: translateX(2px);
+}
+#botao-rotas {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#botao-rotas:hover {
+    background-color: #079eae !important;
+    border: 1px solid #079eae !important;
+    border-radius: 10px;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Mesmo efeito ao passar o mouse em todos os botões */
+#botao-rotas:hover,
+#botao-fronteiras:hover,
+.sidebar .nav-link:hover {
+    background-color: #079eae !important;
+    border: 1px solid #079eae !important;
+    border-radius: 10px;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#botao-fronteiras:hover {
+    font-size: inherit !important;
+    transform: none !important;
+}
+
+#botao-fronteiras,
+#botao-fronteiras:hover,
+#botao-fronteiras:focus,
+#botao-fronteiras:active {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    transform: none !important;
+    scale: none !important;
+    zoom: 1 !important;
+}
+
+#botao-fronteiras:hover * {
+    font-size: inherit !important;
+    transform: none !important;
+    scale: none !important;
+}
+
+/* CORREÇÃO FINAL DOS BOTÕES DO MENU LATERAL */
+
+#botao-rotas,
+#botao-rotas:hover,
+#botao-rotas:focus,
+#botao-rotas:focus-visible,
+#botao-rotas:active,
+#botao-rotas.ativo-rotas,
+#botao-fronteiras,
+#botao-fronteiras:hover,
+#botao-fronteiras:focus,
+#botao-fronteiras:focus-visible,
+#botao-fronteiras:active,
+#botao-fronteiras.ativo,
+.sidebar .nav-link,
+.sidebar .nav-link:hover,
+.sidebar .nav-link:focus,
+.sidebar .nav-link:focus-visible,
+.sidebar .nav-link.active {
+    outline: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Aumentar fonte dos campos País de Origem e País de Destino */
+
+/* =========================
+   PALETA OFICIAL CIARTEC
+========================= */
+
+:root {
+    --cor-fundo: #a3f2f7;
+    --cor-principal: #064547;
+    --cor-secundaria: #043544;
+    --cor-destaque: #43e3ff;
+    --cor-azul: #4191a5;
+    --cor-texto: #056988;
+    --cor-texto-escuro: #14253d;
+    --cor-texto-suave: #65758b;
+    --cor-card: #ffffff;
+    --cor-borda: #e1e7ef;
+    --cor-verde: #29483f;
+    --cor-laranja: #b85c38;
+    --cor-roxo: #eee8ff;
+    --cor-azul-claro: #e7f0ff;
+    --cor-verde-claro: #e5f7ed;
+    --cor-laranja-claro: #fff0dc;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+.cabecalho {
+    background-color: var(--cor-principal);
+}
+
+.menu a:hover,
+.menu a.ativo {
+    border-bottom-color: var(--cor-destaque);
+}
+
+.card,
+.area {
+    background-color: var(--cor-card);
+    border-color: var(--cor-borda);
+    color: var(--cor-texto-escuro);
+}
+
+.area p,
+.card p {
+    color: var(--cor-texto-suave);
+}
+
+.area span {
+    color: var(--cor-azul);
+}
+
+.rodape {
+    background-color: #072f2f;
 }
